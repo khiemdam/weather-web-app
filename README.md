@@ -66,15 +66,17 @@ TODO
     - [X] Request handling
         - [X] Be able to get a task
         - [X] Be able to put a task
-        - [ ] Be able to delete a task
+        - [X] Be able to delete a task
     - [ ] Create database/storage for data
+        - [ ] Install sql
         - [ ] TODO
 - [ ] Hook Together and Deploy
     - [ ] Connect front end and back end
     - [ ] Deploy to AWS
 
 ## Status
-Worked on back end: created structure for API, data handling, dealing with requests (get, put)
+Back end: created structure for API, data handling, dealing with requests (get, put, delete)
+
 Front end: TODO
 
 ## Credits
