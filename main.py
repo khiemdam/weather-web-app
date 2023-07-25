@@ -15,7 +15,7 @@ tasks = {}
 # if id is not in tasks dictionary, cannot use get
 def abort_if_no_id(task_id):
     if task_id not in tasks:
-        abort("Task id is not valid :(")
+        abort(404, "Task id is not valid :(")
 
 # request handling
 class Task(Resource):
