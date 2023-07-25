@@ -15,7 +15,11 @@ tasks = {}
 # if id is not in tasks dictionary, cannot use get
 def abort_if_no_id(task_id):
     if task_id not in tasks:
-        abort(404, "Task id is not valid :(")
+        abort(404, message="Task does not exist with that id :(")
+
+def abort_if_is_id(task_id):
+    if task_id in tasks:
+        abort(404, message="Task already exists with that id :(")
 
 # request handling
 class Task(Resource):
@@ -23,9 +27,15 @@ class Task(Resource):
         abort_if_no_id(task_id)
         return tasks[task_id]
     def put(self, task_id):
+        abort_if_is_id(task_id)
         args = task_put_args.parse_args()
         tasks[task_id] = args
-        return tasks[task_id], 201 # 201 means created
+        return tasks[task_id], 201 # 201 means created successfully
+    def delete(self, task_id):
+        abort_if_no_id(task_id)
+        del(tasks[task_id])
+        return '', 204 # deleted successfully
+
 
 # resources    
 api.add_resource(Task, "/task/<int:task_id>")
