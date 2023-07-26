@@ -68,11 +68,13 @@ TODO
         - [X] Be able to put a task
         - [X] Be able to delete a task
     - [ ] Create database/storage for data
-        - [ ] Install sql
+        - [X] Install sql
+        - [X] Create model class
         - [ ] TODO
+    - [ ] Deploy API to AWS
 - [ ] Hook Together and Deploy
     - [ ] Connect front end and back end
-    - [ ] Deploy to AWS
+    - [ ] Refine visuals and features
 
 ## Status
 Back end: created structure for API, data handling, dealing with requests (get, put, delete)

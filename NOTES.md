@@ -3,7 +3,10 @@
 ### This is where I will write down my notes during this process so I can better understand what I am trying to implement for my web app.
 
 ## Front End
-TODO
+#### Introduction: TODO
 
 ## Back End
-TODO
+#### Introduction: What is an API?
+#### Creating RESTful API
+#### Creating Database
+#### Publishing API
