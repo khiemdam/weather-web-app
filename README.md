@@ -67,19 +67,19 @@ TODO
         - [X] Be able to get a task
         - [X] Be able to put a task
         - [X] Be able to delete a task
-    - [ ] Create database/storage for data
+    - [X] Create database/storage for data
         - [X] Install sql
         - [X] Create model class
-        - [ ] TODO
+        - [X] Update endpoints
     - [ ] Deploy API to AWS
 - [ ] Hook Together and Deploy
     - [ ] Connect front end and back end
     - [ ] Refine visuals and features
 
 ## Status
-Back end: created structure for API, data handling, dealing with requests (get, put, delete)
+Back end: completed REST API, possibly refine it, then publish! add steps to NOTES.md
 
-Front end: TODO
+Front end: created directory for front end files. will create design for website.
 
 ## Credits
 * [Pointers for how to make a web app](https://makingsmallercircles.com/articles/how-to-build-a-web-app/)
