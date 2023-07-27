@@ -1,5 +1,5 @@
-from flask import Flask
-from flask_restful import Api, Resource, reqparse, abort
+from flask import Flask, flash
+from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -18,8 +18,6 @@ class TaskModel(db.Model):
     def __repr__(self):
         return f"Video(name = {self.name}, categ = {self.categ}, month = {self.month}, day = {self.day}, year = {self.year})"
 
-db.create_all()
-
 task_put_args = reqparse.RequestParser()
 task_put_args.add_argument("name", type = str, help = "Name of task is required", required = True)
 task_put_args.add_argument("categ", type = str, help = "Category of task (assignment, event, etc.)")
@@ -27,32 +25,72 @@ task_put_args.add_argument("month", type = int, help = "Month task is due")
 task_put_args.add_argument("day", type = int, help = "Day task is due")
 task_put_args.add_argument("year", type = int, help = "Year task is due")
 
-tasks = {}
+task_update_args = reqparse.RequestParser()
+task_update_args.add_argument("name", type = str, help = "Name of task is required")
+task_update_args.add_argument("categ", type = str, help = "Category of task (assignment, event, etc.)")
+task_update_args.add_argument("month", type = int, help = "Month task is due")
+task_update_args.add_argument("day", type = int, help = "Day task is due")
+task_update_args.add_argument("year", type = int, help = "Year task is due")
 
-# if id is not in tasks dictionary, cannot use get
-def abort_if_no_id(task_id):
-    if task_id not in tasks:
-        abort(404, message = "Task does not exist with that id :(")
-
-def abort_if_is_id(task_id):
-    if task_id in tasks:
-        abort(404, message = "Task already exists with that id :(")
+resource_fields = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'categ': fields.String,
+    'month': fields.Integer,
+    'day': fields.Integer,
+    'year': fields.Integer
+}
 
 # request handling
 class Task(Resource):
+    @marshal_with(resource_fields)
     def get(self, task_id):
-        abort_if_no_id(task_id)
-        return tasks[task_id]
+        result = TaskModel.query.filter_by(id=task_id).first()
+        if not result:
+            abort(404, message="Could not find task with that id...")
+        return result
+    
+    @marshal_with(resource_fields)
     def put(self, task_id):
-        abort_if_is_id(task_id)
         args = task_put_args.parse_args()
-        tasks[task_id] = args
-        return tasks[task_id], 201 # 201 means created successfully
-    def delete(self, task_id):
-        abort_if_no_id(task_id)
-        del(tasks[task_id])
-        return '', 204 # deleted successfully
+        result = TaskModel.query.filter_by(id=task_id).first()
+        if result:
+            abort(409, message="Task id taken...")
+        task = TaskModel(id=task_id, name=args['name'], categ=args['categ'], 
+                         month=args['month'], day=args['day'], year=args['year'])
+        db.session.add(task)
+        db.session.commit()
+        return task, 201 # 201 means created successfully
+    
+    @marshal_with(resource_fields)
+    def patch(self, task_id):
+        args = task_update_args.parse_args()
+        result = TaskModel.query.filter_by(id=task_id).first()
+        if not result:
+            abort(404, message="Cannot update task that doesn't exist...")
+        
+        if args['name']:
+            result.name = args['name']
+        if args['categ']:
+            result.categ = args['categ']
+        if args['month']:
+            result.month = args['month']
+        if args['day']:
+            result.day = args['day']
+        if args['year']:
+            result.year = args['year']
+        
+        db.session.commit()
 
+        return result
+
+    def delete(self, task_id):
+        result = TaskModel.query.filter_by(id=task_id).first()
+        if not result:
+            abort(404, message="Cannot delete task that doesn't exist...")
+        db.session.delete(result)
+        db.session.commit()
+        flash("Task deleted!")
 
 # resources    
 api.add_resource(Task, "/task/<int:task_id>")

@@ -83,6 +83,7 @@ Front end: TODO
 
 ## Credits
 * [Pointers for how to make a web app](https://makingsmallercircles.com/articles/how-to-build-a-web-app/)
+* [Modifying and Querying Data in Flask](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/queries/)
 * [Python Rest API Explained](https://www.youtube.com/watch?v=GMppyAPbLYk&ab_channel=TechWithTim)
 * [WordPress Markdown Reference Sheet](https://wordpress.com/support/markdown-quick-reference/)
 * [Shields and Badges from shields.io](shields.io)
