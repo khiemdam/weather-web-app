@@ -18,7 +18,7 @@
 
 ## Motivation
 
-This project is meant to help me learn how to create a working web app with Flask, while getting more comfortable using python and javascript, as the language I've used for the majority of projects is c++. The project is also for helping me learn more about AWS and other similar services.
+This project is meant to help me learn how to create a working web app with Flask, while getting more comfortable using python and javascript, as the language I've used for the majority of projects is c++.
 
 ## Technologies
 * Python (Flask)
