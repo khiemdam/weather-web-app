@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <script src="https://kit.fontawesome.com/a453701db7.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="/" class="logo">Khiem's Weather Forecast</a></li>
+                <li><a href="/pages/weather.html" class="active">Weather</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about.html">About Me</a></li>
+                <li><a href="/pages/contact.html">Contact Me</a></li>
+            </ul>
+        </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="card">
+            <div class="search">
+                <input type="text" placeholder="enter city name" spellcheck="false">
+                <button><img src="/static/images/search.png"></button>
+            </div>
+            <div class="error">
+                <p>Invalid city name</p>
+            </div>
+            <div class="weather">
+                <div class="details">
+                    <div class="col">
+                        <img src="/static/images/humidity.png">
+                        <div>
+                            <p class="humidity">50%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col-main">
+                        <img src="/static/images/rain.png" class="weather-icon">
+                        <h1 class="temp">22°C</h1>
+                        <h2 class="city">New York</h2>
+                    </div>
+                    <div class="col">
+                        <img src="/static/images/wind.png">
+                        <div>
+                            <p class="wind">15 km/hr</p>
+                            <p>Wind Speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            const apiKey = "315a3fc430e3d789986dd0e80b90a17a";
+            const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+            const searchBox = document.querySelector(".search input")
+            const searchBtn = document.querySelector(".search button")
+            const weatherIcon = document.querySelector(".weather-icon")
+
+            async function checkWeather(city) {
+                const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+                
+                if (response.status == 404) {
+                    document.querySelector(".error").style.display = "block";
+                    document.querySelector(".weather").style.display = "none";
+                }
+                else {
+                    var data = await response.json();
+
+                    document.querySelector(".city").innerHTML = data.name;
+                    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+                    document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+                    document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
+                
+                    if (data.weather[0].main == "Clouds") {
+                        weatherIcon.src = "/static/images/clouds.png";
+                    }
+                    else if (data.weather[0].main == "Clear") {
+                        weatherIcon.src = "/static/images/clear.png";
+                    }
+                    else if (data.weather[0].main == "Rain") {
+                        weatherIcon.src = "/static/images/rain.png";
+                    }
+                    else if (data.weather[0].main == "Drizzle") {
+                        weatherIcon.src = "/static/images/drizzle.png";
+                    }
+                    else if (data.weather[0].main == "Mist") {
+                        weatherIcon.src = "/static/images/mist.png";
+                    }
+                    document.querySelector(".weather").style.display = "block";
+                    document.querySelector(".error").style.display = "none";
+                }
+            }
+
+            searchBtn.addEventListener("click", ()=>{
+                checkWeather(searchBox.value);
+            })
+
+            checkWeather();
+        </script>
+        <footer>
+            <div class="col-1">
+                <h3>USEFUL LINKS</h3>
+                <a href="/">Home</a>
+                <a href="/pages/weather.html">Weather</a>
+                <a href="/pages/about.html">About Me</a>
+                <a href="/pages/contact.html">Contact Me</a>
+            </div>
+            <div class="col-2">
+                <h3>CONTACT</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/khiem.dam/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/khiemd/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/khiemdam"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto: khiem@umich.edu"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
