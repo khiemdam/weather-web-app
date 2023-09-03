@@ -2,9 +2,9 @@
 ![Author][author-shield]
 [![LinkedIn][linkedin-shield]][linkedin-url] [![Handshake][handshake-shield]][handshake-url] ![Status][status-shield]
 
-# Workflow Web Application
+# Weather Web Application
 
-### A web application from scratch that allows users to keep track of their upcoming events, tasks, and due dates. This web app is built on a Python Flask REST API for the back end, and uses HTML and Javascript for the front end UI/UX. The service will be deployed through AWS.
+### A web application from scratch that allows users to view the temperature, humidity, and wind speed in any city in the world. This web app is built utilizing a REST API to make back end calls, and uses HTML, CSS and Javascript for the front end UI/UX.
 
 ## Table of Contents
 * [Motivation](#motivation)
@@ -18,12 +18,13 @@
 
 ## Motivation
 
-This project is meant to help me learn how to create a working web app with Flask, while getting more comfortable using python and javascript, as the language I've used for the majority of projects is c++.
+This project is meant to help me learn how to create a working web app while getting more comfortable using python and javascript, as the language I've used for the majority of projects is c++.
 
 ## Technologies
-* Python (Flask)
+* Python
 * Javascript
 * HTML
+* CSS
 * Any IDE (I used VSCode)
 * AWS
 
@@ -32,54 +33,27 @@ Navigate to your desired directory. In your shell/terminal, type in the followin
 
 For HTTPS
 ```
-git clone https://github.com/khiemdam/workflow-web-app.git
+git clone https://github.com/khiemdam/weather-web-app.git
 ```
 For SSH Keys
 ```
-git clone git@github.com:khiemdam/workflow-web-app.git
+git clone git@github.com:khiemdam/weather-web-app.git
 ```
 
 Make sure you have python installed (check by typing "python" in terminal).
 
-Now, install dependencies from [requirements.txt](./requirements.txt), which can be done with:
-
-```
-pip install -r requirements.txt
-```
-
-## How To Get Started
-I will be documenting my steps on how I built the back end and front end, which will be found in my [NOTES.md](./NOTES.md)
 
 ## How To Use
-TODO
+Once you have all of the files, navigate to the main directory and type
 
-## To-Do List
-##### Note: Backend tasks will be updated soon once I learn more about databases!
-- [ ] Front End UI/UX
-    - [ ] Design screen view of app (Draw This!! :O)
-    - [ ] Build HTML from design idea
-    - [ ] Implement Javascript interactions
-    - [ ] Implement stubs/placeholders for backend calls
-- [ ] Back End API
-    - [X] Create structure
-    - [X] Create a task resource
-    - [X] Request handling
-        - [X] Be able to get a task
-        - [X] Be able to put a task
-        - [X] Be able to delete a task
-    - [X] Create database/storage for data
-        - [X] Install sql
-        - [X] Create model class
-        - [X] Update endpoints
-    - [ ] Deploy API to AWS
-- [ ] Hook Together and Deploy
-    - [ ] Connect front end and back end
-    - [ ] Refine visuals and features
+```
+python3 -m http.server 8000
+```
+
+You may need to create a virtual environment, but once that is done, go to http://localhost:8000/ and you will be able to access the web app!
 
 ## Status
-Back end: completed REST API, possibly refine it, then publish! add steps to NOTES.md
-
-Front end: created directory for front end files. will create design for website.
+Complete! If I make another web app, I am planning to make a workflow management app in the future!
 
 ## Credits
 * [Pointers for how to make a web app](https://makingsmallercircles.com/articles/how-to-build-a-web-app/)
@@ -94,4 +68,4 @@ Front end: created directory for front end files. will create design for website
 [linkedin-url]: https://www.linkedin.com/in/khiemd/
 [handshake-shield]: https://img.shields.io/badge/Handshake-555?style=for-the-badge&logo=handshake&logoColor=white
 [handshake-url]: https://app.joinhandshake.com/stu/users/31441591
-[status-shield]: https://img.shields.io/badge/status-WIP-555?style=for-the-badge&color=FFA500
+[status-shield]: https://img.shields.io/badge/status-completed-555?style=for-the-badge&labelColor=555&color=03c04a
