@@ -6,6 +6,8 @@
 
 ### A web application from scratch that allows users to view the temperature, humidity, and wind speed in any city in the world. This web app is built utilizing a REST API to make back end calls, and uses HTML, CSS and Javascript for the front end UI/UX.
 
+![Website Image](/static/images/webapp-pages.png)
+
 ## Table of Contents
 * [Motivation](#motivation)
 * [Technologies](#technologies)
