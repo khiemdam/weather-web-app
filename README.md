@@ -28,7 +28,6 @@ This project is meant to help me learn how to create a working web app while get
 * HTML
 * CSS
 * Any IDE (I used VSCode)
-* AWS
 
 ## Installation
 Navigate to your desired directory. In your shell/terminal, type in the following:
