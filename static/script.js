@@ -1,3 +1,5 @@
+// Credits: Great Stack https://www.youtube.com/watch?v=MIYQR-Ybrn4
+
 const apiKey = "315a3fc430e3d789986dd0e80b90a17a";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 const searchBox = document.querySelector(".search input")

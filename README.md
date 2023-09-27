@@ -63,6 +63,8 @@ Complete! If I make another web app, I am planning to make a workflow management
 * [Python Rest API Explained](https://www.youtube.com/watch?v=GMppyAPbLYk&ab_channel=TechWithTim)
 * [WordPress Markdown Reference Sheet](https://wordpress.com/support/markdown-quick-reference/)
 * [Shields and Badges from shields.io](shields.io)
+* [Weather API Used](https://openweathermap.org/api)
+* [Guide to using APIs](https://www.youtube.com/watch?v=MIYQR-Ybrn4)
 
 <!-- Links & Images -->
 [author-shield]: https://img.shields.io/badge/Author-Khiem_Dam-555?style=for-the-badge&color=999
