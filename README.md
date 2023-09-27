@@ -4,7 +4,7 @@
 
 # Weather Web Application
 
-### A web application from scratch that allows users to view the temperature, humidity, and wind speed in any city in the world. This web app is built utilizing a REST API to make back end calls, and uses HTML, CSS and Javascript for the front end UI/UX.
+### A web application from scratch that allows users to view the temperature, humidity, and wind speed in any city in the world. This web app is built utilizing a REST API to make back end calls, and uses HTML, CSS and Javascript for the front end UI/UX. Enter the name of a city into the search bar, and the forecast for the day will be displayed!
 
 ![Website Image](/static/images/webapp-pages.png)
 
@@ -28,7 +28,6 @@ This project is meant to help me learn how to create a working web app while get
 * HTML
 * CSS
 * Any IDE (I used VSCode)
-* AWS
 
 ## Installation
 Navigate to your desired directory. In your shell/terminal, type in the following:
